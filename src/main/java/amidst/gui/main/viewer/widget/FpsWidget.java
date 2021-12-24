@@ -13,7 +13,7 @@ import amidst.documentation.CalledOnlyBy;
 import amidst.documentation.NotThreadSafe;
 import amidst.settings.Setting;
 
-@SuppressWarnings("restriction")
+//@SuppressWarnings("restriction")
 @NotThreadSafe
 public class FpsWidget extends TextWidget {
 	private final FramerateTimer fpsTimer;

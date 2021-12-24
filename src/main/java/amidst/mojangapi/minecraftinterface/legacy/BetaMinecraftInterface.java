@@ -89,8 +89,8 @@ public class BetaMinecraftInterface implements MinecraftInterface {
         return recognisedVersion;
     }
 
-    private SymbolicObject constructDimension() throws IllegalAccessException, InstantiationException {
-        return new SymbolicObject(dimensionBaseClass, dimensionOverworldClass.getClazz().newInstance());
+    private SymbolicObject constructDimension() throws IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+        return new SymbolicObject(dimensionBaseClass, dimensionOverworldClass.getClazz().getDeclaredConstructor().newInstance());
     }
 
     private SymbolicObject constructWorld(SymbolicObject overworldDimension, WorldOptions worldOptions) throws InvocationTargetException, IllegalAccessException, InstantiationException {
@@ -323,7 +323,8 @@ public class BetaMinecraftInterface implements MinecraftInterface {
             this.lowerInterpolationNoise = lowerInterpolationNoise;
         }
 
-        public int[] determineOceans(int chunkX, int chunkZ, int[] oceansIn, double[] temperatureNoises, double[] rainfallNoises) throws InvocationTargetException, IllegalAccessException {
+        @SuppressWarnings("unused")
+		public int[] determineOceans(int chunkX, int chunkZ, int[] oceansIn, double[] temperatureNoises, double[] rainfallNoises) throws InvocationTargetException, IllegalAccessException {
             int[] oceans = (oceansIn != null && oceansIn.length >= 16 * 16) ? oceansIn : new int[16 * 16];
 
             double[] noises = this.calculateNoise(chunkX, chunkZ, NOISE_WIDTH, NOISE_HEIGHT, NOISE_DEPTH, temperatureNoises, rainfallNoises);
@@ -404,7 +405,7 @@ public class BetaMinecraftInterface implements MinecraftInterface {
             return clampedInterpolated - depth5;
         }
 
-        @SuppressWarnings("DuplicateExpressions")
+        //@SuppressWarnings("DuplicateExpressions")
         private double interpolateNoise3d(int blockX, int blockY, int blockZ, double[] noises, int noiseHeight, int noiseDepth) {
             int idxX = blockX / 4;
             int idxY = blockY / 8;

@@ -64,7 +64,7 @@ public enum MenuShortcuts implements MenuShortcut {
 		int keycode = keyStroke.getKeyCode();
 		int keymask = keyStroke.getModifiers();
 		if (addMenuMask) {
-			keymask |= Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+			keymask |= Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx();
 		}
 		return KeyStroke.getKeyStroke(keycode, keymask);
 	}

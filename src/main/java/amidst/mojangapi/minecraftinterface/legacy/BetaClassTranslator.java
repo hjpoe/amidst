@@ -4,8 +4,6 @@ import amidst.clazz.real.RealClass;
 import amidst.clazz.translator.ClassTranslator;
 import amidst.mojangapi.minecraftinterface.RecognisedVersion;
 
-import java.util.Objects;
-
 public enum BetaClassTranslator {
     INSTANCE;
 

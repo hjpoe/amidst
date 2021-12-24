@@ -32,7 +32,6 @@ public class Amidst {
 
 	private static void initUncaughtExceptionHandler() {
 		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-			@Override
 			public void uncaughtException(Thread thread, Throwable e) {
 				handleCrash(e, thread);
 			}
